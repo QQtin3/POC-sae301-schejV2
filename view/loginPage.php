@@ -64,7 +64,7 @@
         <h2>Connexion</h2>
 
         <!-- Formulaire de connexion -->
-        <form action="process_login.php" method="POST">
+        <form action="/connect" method="POST">
             <!-- Champ Username -->
             <label for="username">Nom d'utilisateur</label>
             <input type="text" id="username" name="username" required placeholder="Votre nom d'utilisateur">

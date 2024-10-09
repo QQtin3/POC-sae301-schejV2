@@ -59,20 +59,31 @@
             text-align: center;
             font-size: 0.9rem;
         }
+
+        .signup-container p.success {
+            color: green;
+            text-align: center;
+            font-size: 0.9rem;
+        }
     </style>
 
     <div class="signup-container">
         <h2>Créer un Compte</h2>
 
+        <!-- Affichage des messages d'erreur ou de succès -->
+        <?php if (isset($data['message'])): ?>
+            <p class="error"><?= $data['message']; ?></p>
+        <?php endif; ?>
+
+        <?php if (isset($data['username'])): ?>
+            <p class="success">Compte créé avec succès, bienvenue <?= htmlspecialchars($data['username']); ?> !</p>
+        <?php endif; ?>
+
         <!-- Formulaire de création de compte -->
-        <form action="process_signup.php" method="POST">
+        <form action="/register" method="POST">
             <!-- Champ Nom d'utilisateur -->
             <label for="username">Nom d'utilisateur</label>
             <input type="text" id="username" name="username" required placeholder="Votre nom d'utilisateur">
-
-            <!-- Champ Email -->
-            <label for="email">Adresse Email</label>
-            <input type="email" id="email" name="email" required placeholder="Votre adresse email">
 
             <!-- Champ Mot de passe -->
             <label for="password">Mot de passe</label>

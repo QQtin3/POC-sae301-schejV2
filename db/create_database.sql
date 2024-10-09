@@ -6,52 +6,59 @@ time[id, start_time, end_time, event]
 availability[time, event, user, choice]
 */
 
-CREATE TABLE user_data
+DROP TABLE IF EXISTS availability;
+DROP TABLE IF EXISTS times;
+DROP TABLE IF EXISTS choices;
+DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS user_data;
+
+
+CREATE TABLE IF NOT EXISTS user_data
 (
     id         INT PRIMARY KEY AUTO_INCREMENT,
-    username   TEXT NOT NULL UNIQUE,
+    username   VARCHAR(32) NOT NULL UNIQUE,
     password   TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT ck_username_len CHECK (length(username) >= 3),
     CONSTRAINT ck_password_len CHECK (length(password) >= 8)
-);
+    );
 
-CREATE TABLE events
+CREATE TABLE IF NOT EXISTS events
 (
     id          INT PRIMARY KEY AUTO_INCREMENT,
-    name        TEXT NOT NULL,
-    description TEXT,
+    name        VARCHAR(255) NOT NULL,
+    description VARCHAR(999),
     user        INT  NOT NULL,
     start       DATE NOT NULL,
     end         DATE NOT NULL,
     FOREIGN KEY (user) REFERENCES user_data (id)
-);
+    );
 
-CREATE TABLE choices
+CREATE TABLE IF NOT EXISTS choices
 (
     id    INT PRIMARY KEY AUTO_INCREMENT,
-    name  TEXT NOT NULL,
+    name  VARCHAR(255) NOT NULL,
     event INT  NOT NULL,
     FOREIGN KEY (event) REFERENCES events (id)
-);
+    );
 
-CREATE TABLE times
+CREATE TABLE IF NOT EXISTS times
 (
     id         INT PRIMARY KEY AUTO_INCREMENT,
     start_time DATETIME,
     end_time   DATETIME,
     event      INT,
     FOREIGN KEY (event) REFERENCES events (id)
-);
+    );
 
-CREATE TABLE availability
+CREATE TABLE IF NOT EXISTS availability
 (
     time   INT NOT NULL,
     event  INT NOT NULL,
     user   INT NOT NULL,
     choice INT NOT NULL,
-    FOREIGN KEY (time) REFERENCES time (id),
+    FOREIGN KEY (time) REFERENCES times (id),
     FOREIGN KEY (event) REFERENCES events (id),
     FOREIGN KEY (user) REFERENCES user_data (id),
     FOREIGN KEY (choice) REFERENCES choices (id)
-);
+    );

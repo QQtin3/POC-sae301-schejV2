@@ -74,6 +74,45 @@ class UserDataDAO
 
         return $stmt->execute();
     }
+
+    public function isUsernameAlreadyInDB($username): bool
+    {
+        $query = "SELECT COUNT(*) AS nb FROM user_data WHERE username=?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['nb'] > 0;
+    }
+
+    public function retrievePwdWithUsername($username): ?string
+    {
+        try {
+            $query = "SELECT id,password FROM user_data WHERE username=?";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bind_param("s", $username);
+
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                $rows = $result->fetch_assoc();
+                return $rows;
+            } else {
+                return null;
+            }
+        } catch (\Exception $exception) {
+            return null;
+        }
+    }
+
+    public static function isPasswordSecure($password): bool
+    {
+        return strlen($password) >= 8;
+    }
+    public static function isUsernameValid($username): bool
+    {
+        return strlen($username) >= 3;
+    }
 }
 
 ?>

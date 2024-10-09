@@ -17,13 +17,19 @@ use controller\ApplicationController;
 // Add routes here
 ApplicationController::getInstance()->addRoute(
     "/",
-    CONTROLLER_DIR . "/random.php"
+    CONTROLLER_DIR . "/LoginController.php"
 );
 
 ApplicationController::getInstance()->addRoute(
     "register",
     CONTROLLER_DIR . "/RegisterController.php"
 );
+
+ApplicationController::getInstance()->addRoute(
+    "connect",
+    CONTROLLER_DIR . "/LoginController.php"
+);
+
 
 // Process the request
 ApplicationController::getInstance()->process();

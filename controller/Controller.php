@@ -1,10 +1,10 @@
 <?php
 namespace controller;
+
 /**
  * Classe abstraite qui est étendue par les contrôleurs pour traiter
  * les requêtes HTTP POST, GET, ...
  */
-
 abstract class Controller
 {
     /**
@@ -77,4 +77,5 @@ abstract class Controller
         return $output;
     }
 }
+
 ?>

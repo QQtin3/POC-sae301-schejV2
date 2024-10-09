@@ -1,7 +1,7 @@
 <?php
 
 namespace model;
-require_once __ROOT__ . 'config.php';
+require_once __ROOT__ . '/config.php';
 
 use mysqli;
 
