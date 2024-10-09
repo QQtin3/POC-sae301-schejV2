@@ -1,0 +1,5 @@
+user_data [id, username, password, created_at]
+events [id, name, description, user, start, end]
+choices[id, name, event]
+time[start_time, end_time, event]
+availibility[time, event, user, choice]
