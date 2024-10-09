@@ -8,6 +8,7 @@ use mysqli;
 class MySQLConnection
 {
     // Define constants
+    t
 
     private static ?mysqli $instance = null;
 
