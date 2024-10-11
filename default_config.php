@@ -1,5 +1,5 @@
 <?php
-const VIEWS_DIR = __DIR__ . "/view";
+const VIEWS_DIR = __DIR__ . "/src/view";
 const CONTROLLER_DIR = __DIR__ . "/controller";
 const DEBUG = true;
 

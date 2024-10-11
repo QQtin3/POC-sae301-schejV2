@@ -1,0 +1,74 @@
+/* Style général pour le container principal */
+.main-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #f8f9fa;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #1c712e;
+}
+
+/* Style pour la section de l'utilisateur connecté */
+.user-info {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #343a40;
+    font-size: 1.2rem;
+}
+
+/* Style pour les événements */
+.event-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.event-list li {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.event-list li h3 {
+    margin: 0;
+    color: #1c712e;
+}
+
+.event-list li p {
+    margin: 5px 0;
+    color: #343a40;
+}
+
+.event-list li .event-date {
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* Style pour la section de présentation */
+.project-presentation {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 30px;
+}
+
+.project-presentation img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.project-presentation p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #343a40;
+}

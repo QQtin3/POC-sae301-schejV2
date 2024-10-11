@@ -35,6 +35,11 @@ ApplicationController::getInstance()->addRoute(
     CONTROLLER_DIR . "/DisconnectController.php"
 );
 
+ApplicationController::getInstance()->addRoute(
+    "create",
+    CONTROLLER_DIR . "/CreateEventController.php"
+);
+
 
 // Process the request
 ApplicationController::getInstance()->process();
