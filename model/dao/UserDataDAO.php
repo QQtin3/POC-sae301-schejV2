@@ -86,7 +86,7 @@ class UserDataDAO
         return $row['nb'] > 0;
     }
 
-    public function retrievePwdWithUsername($username): ?string
+    public function retrievePwdWithUsername($username)
     {
         try {
             $query = "SELECT id,password FROM user_data WHERE username=?";

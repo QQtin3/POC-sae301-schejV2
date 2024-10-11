@@ -58,10 +58,15 @@
     <nav>
         <ul>
             <li><a href="/">Accueil</a></li>
-            <li><a href="/connect">Connexion</a></li>
-            <li><a href="/register">Création de compte</a></li>
             <li><a href="/create">Créer un planning</a></li>
             <li><a href="/list">Voir vos plannings</a></li>
+            <?php if (isset($_SESSION['user'])) { ?>
+                <li><a href="/disconnect">Déconnexion</a></li>
+            <?php }; ?>
+            <?php if (!isset($_SESSION['user'])) { ?>
+            <li><a href="/connect">Connexion</a></li>
+            <li><a href="/register">Création de compte</a></li>
+            <?php }; ?>
         </ul>
     </nav>
 </header>

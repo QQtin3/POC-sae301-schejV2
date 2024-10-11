@@ -31,12 +31,13 @@ class LoginController extends Controller
             if ($isPasswordValide) {
                 $userData = $dao->getUserById($userId);
                 $_SESSION['user'] = new UserDataModel($userId, $userData['username'], $passwordInDatabase, $userData['created_at']);  // Store connected user in session
-                $this->render("/", []);
+                $_SESSION['username'] = $userData['username'];
+                $this->render("index", ["popupConnected" => "true", "username" => $userData['username']]);
             } else {
-                $this->render("error", ["message" => "Le mot de passe ou le nom d'utilisateur n'est pas valide"]);
+                $this->render("loginPage", ["message" => "Le mot de passe ou le nom d'utilisateur n'est pas valide"]);
             }
         } else {
-            $this->render("error", ["message" => "Le mot de passe ou le nom d'utilisateur n'est pas valide"]);
+            $this->render("loginPage", ["message" => "Le mot de passe ou le nom d'utilisateur n'est pas valide"]);
         }
     }
 }

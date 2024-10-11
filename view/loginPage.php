@@ -63,6 +63,11 @@
     <div class="login-container">
         <h2>Connexion</h2>
 
+        <!-- Affichage du message d'erreur si présent -->
+        <?php if (isset($data['message'])): ?>
+            <p class="error"><?= htmlspecialchars($data['message']); ?></p>
+        <?php endif; ?>
+
         <!-- Formulaire de connexion -->
         <form action="/connect" method="POST">
             <!-- Champ Username -->

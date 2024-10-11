@@ -17,7 +17,7 @@ use controller\ApplicationController;
 // Add routes here
 ApplicationController::getInstance()->addRoute(
     "/",
-    CONTROLLER_DIR . "/LoginController.php"
+    CONTROLLER_DIR . "/MainController.php"
 );
 
 ApplicationController::getInstance()->addRoute(
@@ -28,6 +28,11 @@ ApplicationController::getInstance()->addRoute(
 ApplicationController::getInstance()->addRoute(
     "connect",
     CONTROLLER_DIR . "/LoginController.php"
+);
+
+ApplicationController::getInstance()->addRoute(
+    "disconnect",
+    CONTROLLER_DIR . "/DisconnectController.php"
 );
 
 
