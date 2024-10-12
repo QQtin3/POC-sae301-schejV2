@@ -31,7 +31,7 @@ class AvailabilityDAO
         $stmt->bind_param("iiii", $time, $event, $user, $choice);
 
         if ($stmt->execute()) {
-            return true;
+            return $this->conn->insert_id;  // Retourne le dernier ID inséré
         } else {
             return false;
         }

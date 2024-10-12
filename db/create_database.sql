@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS events
     name        VARCHAR(255) NOT NULL,
     description VARCHAR(999),
     user        INT  NOT NULL,
-    start       DATE NOT NULL,
-    end         DATE NOT NULL,
+    start       DATETIME NOT NULL,
+    end         DATETIME NOT NULL,
     FOREIGN KEY (user) REFERENCES user_data (id)
     );
 

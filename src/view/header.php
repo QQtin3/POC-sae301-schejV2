@@ -10,9 +10,9 @@
     <nav>
         <ul>
             <li><a href="/">Accueil</a></li>
-            <li><a href="/create">Créer un planning</a></li>
-            <li><a href="/list">Voir vos plannings</a></li>
+            <li><a href="/search">Rechercher un événement</a></li>
             <?php if (isset($_SESSION['user'])) { ?> <!-- Ne pas afficher les boutons si le user n'est pas connecté -->
+                <li><a href="/create">Créer un événement</a></li>
                 <li><a href="/disconnect">Déconnexion</a></li>
             <?php }; ?>
             <?php if (!isset($_SESSION['user'])) { ?>  <!-- Ne pas afficher les boutons si le user est connecté-->

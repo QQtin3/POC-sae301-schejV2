@@ -27,9 +27,9 @@ class EventsDAO {
         $start = $event->getStart();
         $end = $event->getEnd();
         $stmt->bind_param("ssiss", $name, $desc, $user, $start, $end);
-
-        if ($stmt->execute()) {
-            return true;
+        $result = $stmt->execute();
+        if ($result) {
+            return $this->conn->insert_id;  // Retourne le dernier ID inséré
         } else {
             return false;
         }

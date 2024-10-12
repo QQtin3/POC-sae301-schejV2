@@ -40,6 +40,11 @@ ApplicationController::getInstance()->addRoute(
     CONTROLLER_DIR . "/CreateEventController.php"
 );
 
+ApplicationController::getInstance()->addRoute(
+    "search",
+    CONTROLLER_DIR . "/SearchActivityController.php"
+);
+
 
 // Process the request
 ApplicationController::getInstance()->process();

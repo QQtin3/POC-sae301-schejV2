@@ -30,7 +30,7 @@ class LoginController extends Controller
             $isPasswordValide = password_verify($password, $passwordInDatabase);  // Check if password is corresponding to hash in DB
             if ($isPasswordValide) {
                 $userData = $dao->getUserById($userId);
-                $_SESSION['user'] = new UserDataModel($userId, $userData['username'], $passwordInDatabase, $userData['created_at']);  // Store connected user in session
+                $_SESSION['user'] = $userId;  // Store connected user in session
                 $_SESSION['username'] = $userData['username'];
                 $this->render("index", ["popupConnected" => "true", "username" => $userData['username']]);
             } else {

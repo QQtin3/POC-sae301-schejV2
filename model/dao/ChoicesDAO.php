@@ -29,7 +29,7 @@ class ChoicesDAO
         $stmt->bind_param("si", $name, $event);
 
         if ($stmt->execute()) {
-            return true;
+            return $this->conn->insert_id;  // Retourne le dernier ID inséré
         } else {
             return false;
         }
