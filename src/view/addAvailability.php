@@ -7,41 +7,39 @@
         <div class="event-container">
             <!-- Section des détails de l'événement -->
             <div class="event-details">
-                <h1><?php echo "name"; ?></h1>
-                <p><?php echo "desc"; ?></p>
-                <p class="event-author">Créé par : Auteur</p>
-            </div>
-
-            <!-- Navigation des semaines -->
-            <div class="week-nav">
-                <button id="prev-week" disabled>Semaine précédente</button>
-                <button id="next-week">Semaine suivante</button>
+                <h1><?php echo $data['title']; ?></h1>
+                <p><?php echo $data['description']; ?></p>
+                <p class="event-author">Créé par : <?php echo $data['author']; ?></p>
             </div>
 
             <!-- Formulaire pour soumettre les disponibilités -->
             <form action="/add_availability" method="POST">
+
+                <!-- input caché pour sauvegarder les cases sélectionnées -->
+                <input type="hidden" name="selected_availabilities" id="selected_availabilities">
+
                 <!-- Calendrier -->
                 <table class="schedule-table">
                     <thead>
                     <tr>
                         <th>Heure</th>
                         <!-- Générer dynamiquement les 7 jours -->
-                        <?php for ($i = 0; $i < 7; $i++): ?>
-                            <th><?php echo date('D, d', strtotime("+$i days", 1729154793)); ?></th>
+                        <?php for ($i = 0; $i < $data['nbDaysInEvent']; $i++): ?>
+                            <th><?php
+                                $timestampStart = strtotime($data['startDay']);
+                                echo date('D, d', strtotime("+$i days", $timestampStart)); ?></th>
                         <?php endfor; ?>
                     </tr>
                     </thead>
                     <tbody>
                     <!-- Création des heures (par exemple de 8h à 18h) -->
-                    <?php for ($hour = 8; $hour <= 18; $hour++): ?>
+                    <?php for ($hour = 8; $hour <= 23; $hour++): ?>
                         <tr>
                             <td><?php echo $hour . ":00"; ?></td>
                             <!-- Création des créneaux horaires pour chaque jour -->
-                            <?php for ($i = 0; $i < 7; $i++): ?>
-                                <td class="checkbox-cell">
-                                    <input type="checkbox" name="availability[]"
-                                           value="<?php echo $hour . '_' . $i; ?>">
-                                </td>
+                            <?php for ($i = 0; $i < $data['nbDaysInEvent']; $i++): ?>
+                                <td class="checkbox-cell" id="<?php echo $hour . '_' . $i; ?>"
+                                    data="<?php echo $hour . '_' . $i; ?>" onclick="toggleCell(this)"></td>
                             <?php endfor; ?>
                         </tr>
                     <?php endfor; ?>
@@ -49,12 +47,16 @@
                 </table>
 
                 <!-- Section de droite : Boutons -->
-                <div class="right-container">
+                <div class="right-container" style="display: flex;">
+                    <input type="hidden" name="eventId" value="<?php echo $data['eventId'] ?>">
                     <input type="submit" value="Confirmer">
-                    <input type="button" value="Annuler" onclick="window.history.back();"> <!-- renvoie à la page précédente -->
-                </div>
+            </form>
+            <!-- Annuler button as part of another form, aligned horizontally -->
+            <form action="/display" method="POST">
+                <input type="hidden" name="event_id" value="<?php echo $data['eventId'] ?>">
+                <input type="submit" id="best-options" value="Annuler">
             </form>
         </div>
-        <script src="/src/script/displayEvent.js"></script>
+        <script src="/src/script/addAvailability.js"></script>
     </main>
 <?php include 'footer.php'; ?>

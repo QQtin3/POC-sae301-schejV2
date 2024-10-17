@@ -21,14 +21,16 @@ class AvailabilityDAO
     // Ajouter une disponibilité
     public function createAvailability(AvailabilityModel $availability)
     {
-        $query = "INSERT INTO availability (time, event, user, choice) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO availability (event, user, choice, start_time, end_time, choiceValue) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
 
-        $time = $availability->getTime();
+        $start_time = $availability->getStartTime();
+        $end_time = $availability->getEndTime();
         $event = $availability->getEvent();
         $user = $availability->getUser();
         $choice = $availability->getChoice();
-        $stmt->bind_param("iiii", $time, $event, $user, $choice);
+        $choiceValue = $availability->getChoiceValue();
+        $stmt->bind_param("iiisss", $event, $user, $choice, $start_time, $end_time, $choiceValue);
 
         if ($stmt->execute()) {
             return $this->conn->insert_id;  // Retourne le dernier ID inséré
@@ -38,11 +40,31 @@ class AvailabilityDAO
     }
 
     // Trouver une disponibilité par événement et utilisateur
-    public function getAvailability($event, $user)
+    public function getAvailabilityFromEvent($eventId)
     {
-        $query = "SELECT * FROM availability WHERE event = ? AND user = ?";
+        $query = "SELECT * FROM availability WHERE event = ?";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("ii", $event, $user);
+        $stmt->bind_param("i", $eventId);
+
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            $availabilities = [];
+
+            // Tous les résultats sont ajoutés
+            while ($row = $result->fetch_assoc()) {
+                $availabilities[] = $row;
+            }
+            return $availabilities;
+        } else {
+            return null;
+        }
+    }
+
+    public function getNbPeopleAnswered($eventId)
+    {
+        $query = "SELECT COUNT(DISTINCT user) as nbUser FROM availability WHERE event = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $eventId);
 
         if ($stmt->execute()) {
             $result = $stmt->get_result();
@@ -52,29 +74,25 @@ class AvailabilityDAO
         }
     }
 
-    // Mettre à jour une disponibilité
-    public function updateAvailability(AvailabilityModel $availability)
+    public function didUserAnsweredYet(int $id_user, int $id_event): ?bool
     {
-        $query = "UPDATE availability SET time = ?, choice = ? WHERE event = ? AND user = ?";
+        $query = "SELECT COUNT(DISTINCT user) as nbUser FROM availability WHERE event = ? AND user = ?";
         $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("ii", $id_event, $id_user);
 
-        $time = $availability->getTime();
-        $event = $availability->getEvent();
-        $user = $availability->getUser();
-        $choice = $availability->getChoice();
-        $stmt->bind_param("iiii", $time, $choice, $event, $user);
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            $array = $result->fetch_assoc();
 
-        return $stmt->execute();
-    }
-
-    // Supprimer une disponibilité
-    public function deleteAvailability($event, $user): bool
-    {
-        $query = "DELETE FROM availability WHERE event = ? AND user = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("ii", $event, $user);
-
-        return $stmt->execute();
+            // Retourne true si l'utilisateur a déjà répondu
+            if ($array['nbUser'] > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return null;
+        }
     }
 }
 

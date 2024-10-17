@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS availability
     event  INT NOT NULL,
     user   INT NOT NULL,
     choice INT NOT NULL,
+    choiceValue VARCHAR(255) NOT NULL,
     start_time DATETIME NOT NULL,
     end_time   DATETIME NOT NULL,
     FOREIGN KEY (event) REFERENCES events (id),

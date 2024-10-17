@@ -23,7 +23,6 @@
 }
 
 .create-event-container input[type="text"],
-.create-event-container input[type="datetime-local"],
 .create-event-container textarea {
     width: 100%;
     padding: 10px;
@@ -132,4 +131,32 @@
 
 .option-input button:hover {
     background-color: #218838;
+}
+
+/* Style spécifique pour les champs date */
+.create-event-container input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #f8f9fa; /* Pour qu'il corresponde à la couleur du container */
+    color: #343a40; /* Couleur du texte */
+}
+
+/* Changer le style au focus */
+.create-event-container input[type="date"]:focus {
+    border-color: #1c712e;
+    outline: none; /* Retire l'effet de bordure bleue par défaut */
+    box-shadow: 0 0 5px rgba(28, 113, 46, 0.3); /* Légère ombre verte lors du focus */
+}
+
+/* Ajustement pour les labels des champs date */
+.create-event-container label[for="start_date"],
+.create-event-container label[for="end_date"] {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #343a40;
 }

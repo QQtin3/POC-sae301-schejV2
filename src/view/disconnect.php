@@ -8,7 +8,7 @@
     <?php if (isset($data['isDisconnected'])) { ?>
         <div class="message-container">
             <h2>Déconnexion</h2>
-            <p>Vous avez été déconnecté avec succès. Vous allez être redirigé vers la page de connexion dans 3
+            <p>Vous avez été déconnecté avec succès. Vous allez être redirigé vers la page d'accueil dans 3
                 secondes...</p>
         </div>
 

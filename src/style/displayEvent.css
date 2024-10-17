@@ -29,29 +29,51 @@
     color: #343a40;
 }
 
+.event-details button {
+    background-color: #1c712e; /* Couleur de fond verte */
+    color: white; /* Couleur du texte */
+    padding: 10px 15px; /* Espacement à l'intérieur du bouton */
+    border: none; /* Pas de bordure */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointer sur le survol */
+    font-size: 1rem; /* Taille de police */
+    transition: background-color 0.3s ease; /* Effet de transition pour le changement de couleur */
+}
+
+/* Effet de survol pour le bouton */
+.event-details button:hover {
+    background-color: #218838; /* Couleur verte plus foncée au survol */
+}
+
+/* Style pour un bouton désactivé */
+.event-details button:disabled {
+    background-color: #ccc; /* Couleur grise pour un bouton désactivé */
+    cursor: not-allowed; /* Curseur indiquant que le bouton est désactivé */
+}
+
+/* Styles pour le tooltip */
+.tooltip {
+    display: none; /* Cacher par défaut */
+    position: absolute; /* Positionner par rapport au parent */
+    background-color: rgba(0, 0, 0, 0.8); /* Couleur de fond du tooltip */
+    color: white; /* Couleur du texte */
+    padding: 5px 10px; /* Espacement */
+    border-radius: 4px; /* Coins arrondis */
+    z-index: 100; /* S'assurer qu'il est au-dessus des autres éléments */
+}
+
+/* Afficher le tooltip lors du survol du bouton désactivé */
+.event-details button:disabled + .tooltip {
+    display: block; /* Afficher le tooltip */
+    top: 100%; /* Positionner sous le bouton */
+    left: 50%; /* Centrer horizontalement */
+    transform: translateX(-50%); /* Ajuster pour le centrage */
+    margin-top: 5px; /* Espacement entre le bouton et le tooltip */
+}
+
 /* Conteneur pour le tableau */
 .schedule-table-container {
     margin-bottom: 30px;
-}
-
-/* Navigation des semaines */
-.week-nav {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.week-nav button {
-    padding: 10px 20px;
-    background-color: #1c712e;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.week-nav button:hover {
-    background-color: #165b25;
 }
 
 /* Tableau style emploi du temps */
@@ -64,7 +86,7 @@
 /* En-tête de tableau (jours) */
 .schedule-table th, .schedule-table td {
     padding: 15px;
-    border: 1px solid #ced4da;
+    border: 1px solid #000000;
     text-align: center;
     vertical-align: middle;
 }
@@ -106,4 +128,62 @@ button:disabled {
     color: #666; /* Gray text */
     cursor: not-allowed; /* Show a not-allowed cursor */
     pointer-events: none; /* Ensure the button is truly non-clickable */
+}
+
+.right-container input {
+    padding: 10px 20px;
+    background-color: #1c712e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.right-container input:hover {
+    background-color: #165b25;
+}
+
+input:disabled {
+    background-color: #ccc; /* A gray background to indicate disabled */
+    color: #666; /* Gray text */
+    cursor: not-allowed; /* Show a not-allowed cursor */
+    pointer-events: none; /* Ensure the button is truly non-clickable */
+}
+
+/* CSS Code */
+.tooltip-container {
+    position: relative; /* Position relative for the tooltip */
+    display: inline-block; /* Ensure it behaves like an inline element */
+}
+
+.tooltip {
+    display: block;
+    visibility: hidden; /* Hidden by default */
+    width: 200px; /* Adjust width as needed */
+    background-color: black; /* Tooltip background color */
+    color: #fff; /* Tooltip text color */
+    text-align: center; /* Center the text */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px; /* Padding around the text */
+    position: absolute; /* Position absolutely */
+    z-index: 1; /* Make sure it appears above other content */
+    bottom: 100%; /* Position above the button */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Shift it to center */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s; /* Fade effect */
+}
+
+/* Show the tooltip when hovering over the disabled button */
+.tooltip-container input:disabled:hover + .tooltip,
+.tooltip-container:hover .tooltip {
+    visibility: visible; /* Show the tooltip */
+    opacity: 1; /* Make it fully visible */
+}
+
+/* Style for the disabled button */
+button:disabled {
+    background-color: #ccc; /* A gray background to indicate disabled */
+    color: #666; /* Gray text */
+    cursor: not-allowed; /* Show a not-allowed cursor */
 }

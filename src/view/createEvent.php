@@ -43,28 +43,29 @@
             <textarea id="description" name="description" rows="4" placeholder="Ajoutez une description (optionnel)"></textarea>
 
             <!-- Champ Date de début -->
-            <label for="start_date">Date et heure de début</label>
-            <input type="datetime-local" id="start_date" name="start_date" required>
+            <label for="start_date">Date de début</label>
+            <input type="date" id="start_date" name="start_date" required>
 
             <!-- Champ Date de fin -->
-            <label for="end_date">Date et heure de fin</label>
-            <input type="datetime-local" id="end_date" name="end_date" required>
+            <label for="end_date">Date de fin</label>
+            <input type="date" id="end_date" name="end_date" required>
 
-            <!-- Section pour ajouter des choix supplémentaires -->
-            <div class="option-container">
+            <!-- Section pour ajouter des choix supplémentaires (Finalement non implémenté mais potentiel mise à jour) -->
+
+            <!-- <div class="option-container">
                 <label for="choices">Choix supplémentaires (optionnels)</label>
-                <div id="choice-list"></div>
+                <div id="choice-list"></div> -->
 
                 <!-- Bouton pour ajouter un choix -->
-                <button type="button" onclick="addChoice()">Ajouter un choix</button>
-            </div>
+                <!-- <button type="button" onclick="addChoice()">Ajouter un choix</button>
+            </div> -->
 
             <!-- Bouton de soumission -->
             <input type="submit" value="Créer l'événement">
         </form>
     </div>
 
-    <!-- Alertee personnalisée pour les erreurs -->
+    <!-- Alerte personnalisée pour les erreurs -->
     <div id="errorAlerte" class="alerte">
         <div class="alerte-content">
             <p id="alerte-message">Erreur</p>

@@ -1,0 +1,75 @@
+/* Style du container de recherche d'événement */
+.event-search-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre principal */
+.event-search-container h2 {
+    text-align: center;
+    color: #28a745;
+}
+
+/* Style du formulaire */
+.event-search-container form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Champs de saisie et bouton */
+.event-search-container input[type="number"],
+.event-search-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Bouton de soumission */
+.event-search-container input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+.event-search-container input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Conteneur pour les détails de l'événement */
+.event-details {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Style pour le bouton "Voir l'événement" */
+.event-details button {
+    background-color: #1c712e; /* Couleur de fond verte */
+    color: white; /* Couleur du texte */
+    padding: 10px 15px; /* Espacement à l'intérieur du bouton */
+    border: none; /* Pas de bordure */
+    border-radius: 4px; /* Coins arrondis */
+    cursor: pointer; /* Curseur pointer sur le survol */
+    font-size: 1rem; /* Taille de police */
+    transition: background-color 0.3s ease; /* Effet de transition pour le changement de couleur */
+}
+
+/* Effet de survol pour le bouton */
+.event-details button:hover {
+    background-color: #218838; /* Couleur verte plus foncée au survol */
+}
+
+/* Style pour un bouton désactivé (optionnel) */
+.event-details button:disabled {
+    background-color: #ccc; /* Couleur grise pour un bouton désactivé */
+    cursor: not-allowed; /* Curseur indiquant que le bouton est désactivé */
+}

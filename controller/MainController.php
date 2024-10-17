@@ -16,7 +16,11 @@ class MainController extends Controller
         } else {
             $eventsDAO = new EventsDAO();
             $events = $eventsDAO->getEventByUserId($_SESSION['user']);
-            $this->render("index", ["events" => $events]);  // Renvoie avec les événements créés par l'utilisateur
+            if ($events === null || count($events) === 0) {
+                $this->render("index", []);
+            } else {
+                $this->render("index", ["events" => $events]);  // Renvoie avec les événements créés par l'utilisateur
+            }
         }
     }
 

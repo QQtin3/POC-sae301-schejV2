@@ -1,5 +1,6 @@
 <?php include 'header.php'; ?>
     <head>
+        <title>POC - SchejV2</title>
         <link href="/src/style/index.css" rel="stylesheet" type="text/css">
     </head>
     <main>
@@ -30,7 +31,7 @@
                                 // Bouton pour supprimer l'événement
                                 echo "<form action='/delete' method='POST' style='display:inline;'>";
                                 echo "<input type='hidden' name='event_id' value='" . htmlspecialchars($datum['id']) . "'>";
-                                echo "<button type='submit' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cet événement ?\");'>Supprimer l'événement</button>";
+                                echo "<button type='submit'>Supprimer l'événement</button>";
                                 echo "</form>";
 
                                 // Bouton pour consulter l'événement
@@ -56,7 +57,7 @@
                         Inscrivez-vous ou connectez-vous pour commencer à organiser vos événements dès maintenant.</p>
 
                     <!-- Ajout d'une image représentative -->
-                    <img src="images/event_planning.jpg" alt="Image de présentation du projet">
+                    <img src="/src/img/logo.jpg" alt="Image de présentation du projet">
                 </div>
             <?php endif; ?>
         </div>

@@ -63,27 +63,10 @@ class EventsDAO {
             while ($row = $result->fetch_assoc()) {
                 $events[] = $row;
             }
-
             return $events;
         } else {
             return null; // Echec de la requête
         }
-    }
-
-    // Mettre à jour un événement
-    public function updateEvent(EventsModel $event) {
-        $query = "UPDATE events SET name = ?, description = ?, user = ?, start = ?, end = ? WHERE id = ?";
-        $stmt = $this->conn->prepare($query);
-
-        $name = $event->getName();
-        $desc = $event->getDescription();
-        $user = $event->getUser();
-        $start = $event->getStart();
-        $end = $event->getEnd();
-        $id = $event->getId();
-        $stmt->bind_param("ssissi", $name, $desc, $user, $start, $end, $id);
-
-        return $stmt->execute();
     }
 
     // Supprimer un événement
@@ -91,6 +74,7 @@ class EventsDAO {
 
         // D'abord supprimer les entrées contenant une référence vers l'événement dans les autres tables
         $this->deleteRelatedChoices($id);
+        $this->deleteRelatedAvailabilities($id);
 
         // Puis supprimer l'événement
         $query = "DELETE FROM events WHERE id = ?";
@@ -103,6 +87,14 @@ class EventsDAO {
     // Fonction associée à deleteEvent
     private function deleteRelatedChoices($eventId) {
         $query = "DELETE FROM choices WHERE event = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $eventId);
+        return $stmt->execute();
+    }
+
+    // Fonction associée à deleteEvent
+    private function deleteRelatedAvailabilities($eventId) {
+        $query = "DELETE FROM availability WHERE event = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("i", $eventId);
         return $stmt->execute();

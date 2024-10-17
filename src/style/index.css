@@ -72,3 +72,21 @@
     line-height: 1.6;
     color: #343a40;
 }
+
+/* Styles for both buttons */
+.event-list button {
+    background-color: #1c712e; /* Green background for default action (View) */
+    color: white; /* White text color */
+    padding: 10px 15px; /* Padding for button */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1rem; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    margin: 0 5px; /* Margin between buttons */
+}
+
+/* Hover effect for the View button */
+.event-list button:hover {
+    background-color: #218838; /* Darker green for hover */
+}

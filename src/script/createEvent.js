@@ -14,12 +14,15 @@ function addChoice() {
             `;
     choiceList.appendChild(choiceDiv);
 }
+// FONCTION NON IMPLÉMENTÉE EN RÉEL CI-DESSUS
+
 
 function removeChoice(id) {
     const choiceDiv = document.getElementById('choice-' + id);
     choiceDiv.remove();
 }
 
+// Fait des vérifications sur la validité des dates
 function validateDates() {
     const startDate = new Date(document.getElementById('start_date').value);
     const endDate = new Date(document.getElementById('end_date').value);
@@ -32,11 +35,15 @@ function validateDates() {
 
     // Vérifie que l'événement ne dépasse pas 14 jours
     const differenceInDays = (endDate - startDate) / (1000 * 60 * 60 * 24);
-    if (differenceInDays > 14) {
-        showAlerte('La durée totale de l\'événement ne peut pas dépasser 14 jours.');
+    if (differenceInDays > 7) {
+        showAlerte('La durée totale de l\'événement ne peut pas dépasser 7 jours.');
         return false;
     }
 
+    if (startDate < Date.now()) {
+        showAlerte('La date de début ne peut pas être dans le passé');
+        return false;
+    }
     return true;
 }
 
