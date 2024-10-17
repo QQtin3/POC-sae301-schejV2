@@ -1,0 +1,109 @@
+/* Conteneur principal pour l'événement */
+.event-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Centrer le contenu à l'intérieur du conteneur */
+.event-details, .schedule-table-container, .right-container {
+    text-align: center;
+}
+
+/* Détails de l'événement */
+.event-details {
+    margin-bottom: 30px;
+}
+
+.event-details h1 {
+    font-size: 2rem;
+    color: #1c712e;
+    margin-bottom: 10px;
+}
+
+.event-details p {
+    font-size: 1.2rem;
+    color: #343a40;
+}
+
+/* Conteneur pour le tableau */
+.schedule-table-container {
+    margin-bottom: 30px;
+}
+
+/* Navigation des semaines */
+.week-nav {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.week-nav button {
+    padding: 10px 20px;
+    background-color: #1c712e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.week-nav button:hover {
+    background-color: #165b25;
+}
+
+/* Tableau style emploi du temps */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+/* En-tête de tableau (jours) */
+.schedule-table th, .schedule-table td {
+    padding: 15px;
+    border: 1px solid #ced4da;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.schedule-table th {
+    background-color: #1c712e;
+    color: white;
+}
+
+/* Cases à cocher */
+.checkbox-cell {
+    text-align: center;
+}
+
+/* Boutons à droite */
+.right-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.right-container button {
+    width: 45%;
+    padding: 10px;
+    background-color: #1c712e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.right-container button:hover {
+    background-color: #165b25;
+}
+
+button:disabled {
+    background-color: #ccc; /* A gray background to indicate disabled */
+    color: #666; /* Gray text */
+    cursor: not-allowed; /* Show a not-allowed cursor */
+    pointer-events: none; /* Ensure the button is truly non-clickable */
+}

@@ -42,7 +42,22 @@ ApplicationController::getInstance()->addRoute(
 
 ApplicationController::getInstance()->addRoute(
     "search",
-    CONTROLLER_DIR . "/SearchActivityController.php"
+    CONTROLLER_DIR . "/SearchEventController.php"
+);
+
+ApplicationController::getInstance()->addRoute(
+    "add_availability",
+    CONTROLLER_DIR . "/AddAvailabilityController.php"
+);
+
+ApplicationController::getInstance()->addRoute(
+    "display",
+    CONTROLLER_DIR . "/DisplayEventController.php"
+);
+
+ApplicationController::getInstance()->addRoute(
+    "delete",
+    CONTROLLER_DIR . "/DeleteEventController.php"
 );
 
 

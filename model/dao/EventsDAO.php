@@ -49,6 +49,27 @@ class EventsDAO {
         }
     }
 
+    // Trouver un événement par ID
+    public function getEventByUserId($id) {
+        $query = "SELECT * FROM events WHERE user = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $id);
+
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            $events = [];
+
+            // Tous les résultats sont ajoutés
+            while ($row = $result->fetch_assoc()) {
+                $events[] = $row;
+            }
+
+            return $events;
+        } else {
+            return null; // Echec de la requête
+        }
+    }
+
     // Mettre à jour un événement
     public function updateEvent(EventsModel $event) {
         $query = "UPDATE events SET name = ?, description = ?, user = ?, start = ?, end = ? WHERE id = ?";
@@ -67,10 +88,23 @@ class EventsDAO {
 
     // Supprimer un événement
     public function deleteEvent($id) {
+
+        // D'abord supprimer les entrées contenant une référence vers l'événement dans les autres tables
+        $this->deleteRelatedChoices($id);
+
+        // Puis supprimer l'événement
         $query = "DELETE FROM events WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("i", $id);
 
+        return $stmt->execute();
+    }
+
+    // Fonction associée à deleteEvent
+    private function deleteRelatedChoices($eventId) {
+        $query = "DELETE FROM choices WHERE event = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $eventId);
         return $stmt->execute();
     }
 }

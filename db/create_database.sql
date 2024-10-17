@@ -2,12 +2,10 @@
 user_data [id, username, password, created_at]
 events [id, name, description, user, start, end]
 choices[id, name, event]
-time[id, start_time, end_time, event]
-availability[time, event, user, choice]
+availability[event, user, choice, start_time, end_time]
 */
 
 DROP TABLE IF EXISTS availability;
-DROP TABLE IF EXISTS times;
 DROP TABLE IF EXISTS choices;
 DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS user_data;
@@ -42,22 +40,13 @@ CREATE TABLE IF NOT EXISTS choices
     FOREIGN KEY (event) REFERENCES events (id)
     );
 
-CREATE TABLE IF NOT EXISTS times
-(
-    id         INT PRIMARY KEY AUTO_INCREMENT,
-    start_time DATETIME,
-    end_time   DATETIME,
-    event      INT,
-    FOREIGN KEY (event) REFERENCES events (id)
-    );
-
 CREATE TABLE IF NOT EXISTS availability
 (
-    time   INT NOT NULL,
     event  INT NOT NULL,
     user   INT NOT NULL,
     choice INT NOT NULL,
-    FOREIGN KEY (time) REFERENCES times (id),
+    start_time DATETIME NOT NULL,
+    end_time   DATETIME NOT NULL,
     FOREIGN KEY (event) REFERENCES events (id),
     FOREIGN KEY (user) REFERENCES user_data (id),
     FOREIGN KEY (choice) REFERENCES choices (id)

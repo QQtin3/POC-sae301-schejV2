@@ -68,7 +68,7 @@ include 'header.php'; // Inclure l'en-tête
             <input type="submit" value="Rechercher">
         </form>
 
-        <!-- Conteneur pour les détails de l'événement (à compléter avec le backend) -->
+        <!-- Conteneur pour les détails de l'événement -->
         <div class="event-details">
             <?php if (isset($data['id'])) {
                 echo "<h2>" . $data['title'] . "</h2>";

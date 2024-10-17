@@ -8,7 +8,7 @@ use model\dao\UserDataDAO;
 
 require_once CONTROLLER_DIR . '/Controller.php';
 
-class DisplayActivityController extends Controller
+class DisplayEventController extends Controller
 {
     public function get($request): void
     {
@@ -20,6 +20,8 @@ class DisplayActivityController extends Controller
         $EventsDAO = new EventsDAO();
         $UserDataDAO = new UserDataDAO();
         $AvailabilityDAO = new AvailabilityDAO();
+
+        $this->render('displayEvent', ["message" => "Méthode non prise en charge"]);
 
 
     }

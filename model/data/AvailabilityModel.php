@@ -4,25 +4,22 @@ namespace model\data;
 
 class AvailabilityModel
 {
-    private $time;
+    private $start_time;
+    private $end_time;
     private $event;
     private $user;
     private $choice;
 
-    public function __construct($time = null, $event = null, $user = null, $choice = null)
+    public function __construct($event = null, $user = null, $choice = null, $start_time = null, $end_time = null)
     {
-        $this->time = $time;
         $this->event = $event;
         $this->user = $user;
         $this->choice = $choice;
+        $this->start_time = $start_time;
+        $this->end_time = $end_time;
     }
 
     // Getters and Setters
-    public function getTime()
-    {
-        return $this->time;
-    }
-
     public function getEvent()
     {
         return $this->event;
@@ -36,11 +33,6 @@ class AvailabilityModel
     public function getChoice()
     {
         return $this->choice;
-    }
-
-    public function setTime($time)
-    {
-        $this->time = $time;
     }
 
     public function setEvent($event)

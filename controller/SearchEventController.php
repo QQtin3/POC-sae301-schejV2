@@ -9,7 +9,7 @@ require_once __ROOT__ . "/model/dao/EventsDAO.php";
 require_once __ROOT__ . "/model/dao/UserDataDAO.php";
 require_once CONTROLLER_DIR . '/Controller.php';
 
-class SearchActivityController extends Controller
+class SearchEventController extends Controller
 {
     public function get($request): void
     {
