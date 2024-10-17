@@ -17,11 +17,6 @@ class ChoicesModel
     }
 
     // Getters and Setters
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public function getName()
     {
         return $this->name;
@@ -30,21 +25,6 @@ class ChoicesModel
     public function getEvent()
     {
         return $this->event;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    public function setEvent($event)
-    {
-        $this->event = $event;
     }
 }
 

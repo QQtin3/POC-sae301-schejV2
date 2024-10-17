@@ -51,30 +51,6 @@ class UserDataDAO
         }
     }
 
-    // Mettre à jour un utilisateur
-    public function updateUser(UserDataModel $userData): bool
-    {
-        $query = "UPDATE user_data SET username = ?, password = ? WHERE id = ?";
-        $stmt = $this->conn->prepare($query);
-
-        $username = $userData->getUsername();
-        $password = $userData->getPassword();
-        $id = $userData->getId();
-        $stmt->bind_param("ssi", $username, $password, $id);
-
-        return $stmt->execute();
-    }
-
-    // Supprimer un utilisateur
-    public function deleteUser($id): bool
-    {
-        $query = "DELETE FROM user_data WHERE id = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $id);
-
-        return $stmt->execute();
-    }
-
     public function isUsernameAlreadyInDB($username): bool
     {
         $query = "SELECT COUNT(*) AS nb FROM user_data WHERE username=?";

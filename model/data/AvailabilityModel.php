@@ -51,21 +51,6 @@ class AvailabilityModel
     {
         return $this->choice;
     }
-
-    public function setEvent($event)
-    {
-        $this->event = $event;
-    }
-
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
-
-    public function setChoice($choice)
-    {
-        $this->choice = $choice;
-    }
 }
 
 ?>

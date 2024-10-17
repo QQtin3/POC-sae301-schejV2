@@ -22,11 +22,6 @@ class EventsModel
     }
 
     // Getters and Setters as needed
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public function getName()
     {
         return $this->name;
@@ -50,35 +45,5 @@ class EventsModel
     public function getEnd()
     {
         return $this->end;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
-
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
-
-    public function setStart($start)
-    {
-        $this->start = $start;
-    }
-
-    public function setEnd($end)
-    {
-        $this->end = $end;
     }
 }
