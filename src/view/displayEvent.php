@@ -67,7 +67,16 @@
                     <input type="hidden" name="wannaAdd" value="true">
                     <input type="hidden" name="eventId" value="<?php echo $data['eventId']; ?>">
                     <?php
-                    if (isset($data['userAlreadyAnswered'])) {
+
+                    $currentTime= new DateTime();
+                    $end_time = new DateTime($data['startDay']);
+                    $end_time->modify("+ {$data['nbDaysInEvent']} days");
+                    if ($currentTime > $end_time) {
+                        echo "<div class='tooltip-container'>"; // Container pour le tooltip
+                        echo "<input type='submit' value='Ajouter des disponibilités' disabled>";
+                        echo "<span class='tooltip'>Vous ne pouvez pas ajouter de disponibilité si la date de fin est déjà passée.</span>";  // Tooltip pour afficher la raison
+                        echo "</div>";
+                    } else if (isset($data['userAlreadyAnswered'])) {
                         echo "<div class='tooltip-container'>"; // Container pour le tooltip
                         if ($data['userAlreadyAnswered']) {
                             echo "<input type='submit' value='Ajouter des disponibilités' disabled>";
