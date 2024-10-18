@@ -36,7 +36,9 @@ class DisplayEventController extends Controller
             $end_event_day = new DateTime($event['end']);
             $nbDaysEvent = $start_event_day->diff($end_event_day)->days;  // Nombre de jours dans l'événement
             $nbParticipants = $AvailabilityDAO->getNbPeopleAnswered($request['event_id'])['nbUser'];
-            $userAlreadyAnswered = $AvailabilityDAO->didUserAnsweredYet($_SESSION['user'], $request['event_id']);
+            if (isset($_SESSION['user'])) {
+                $userAlreadyAnswered = $AvailabilityDAO->didUserAnsweredYet($_SESSION['user'], $request['event_id']);
+            }
 
             $availability_counts = [];
             for ($i = 8; $i < 24; $i++) {
