@@ -51,7 +51,8 @@
                                 $greenColor = 255;
                                 $blueColor = intval(255 - ($pourcentage * (255 - 120)));
                                 ?>
-                                <td class="checkbox-cell" id="<?php echo $id; ?>" style="background-color: rgb(<?php echo $redColor ?>, <?php echo $greenColor ?>, <?php echo $blueColor ?>)">
+                                <td class="checkbox-cell" id="<?php echo $id; ?>"
+                                    style="background-color: rgb(<?php echo $redColor ?>, <?php echo $greenColor ?>, <?php echo $blueColor ?>)">
                                 </td>
                             <?php endfor; ?>
                         </tr>
@@ -75,11 +76,17 @@
                             echo "<input type='submit' value='Ajouter des disponibilités'>";
                         }
                         echo "</div>";
+                    } else {
+                        echo "<div class='tooltip-container'>"; // Container pour le tooltip
+                        echo "<input type='submit' value='Ajouter des disponibilités' disabled>";
+                        echo "<span class='tooltip'>Vous ne pouvez pas ajouter de disponibilité si vous n'êtes pas connecté.</span>";  // Tooltip pour afficher la raison
+                        echo "</div>";
                     }
 
                     ?>
 
-                    <input type="button" id="best-options" value="Voir les meilleurs créneaux" onclick="viewBestSlots()">
+                    <input type="button" id="best-options" value="Voir les meilleurs créneaux"
+                           onclick="viewBestSlots()">
                 </div>
             </form>
         </div>

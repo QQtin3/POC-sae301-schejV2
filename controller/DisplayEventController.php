@@ -36,8 +36,6 @@ class DisplayEventController extends Controller
             $end_event_day = new DateTime($event['end']);
             $nbDaysEvent = $start_event_day->diff($end_event_day)->days;  // Nombre de jours dans l'événement
             $nbParticipants = $AvailabilityDAO->getNbPeopleAnswered($request['event_id'])['nbUser'];
-            $userAlreadyAnswered = $AvailabilityDAO->didUserAnsweredYet($_SESSION['user'], $request['event_id']);
-
             $availability_counts = [];
             for ($i = 8; $i < 24; $i++) {
                 for ($j = 0; $j < $nbDaysEvent; $j++) {
@@ -58,7 +56,13 @@ class DisplayEventController extends Controller
                     $availability_counts[$hour . '_' . $day_offset]++;
                 }
             }
-            $this->render('displayEvent', ['title' => $event['name'], 'description' => $event['description'], 'author' => $author['username'], 'availabilities' => $availability_counts, 'nbParticipants' => $nbParticipants, 'startDay' => $event['start'], 'nbDaysInEvent' => $nbDaysEvent, 'eventId' => $event['id'], 'userAlreadyAnswered' => $userAlreadyAnswered]);
+
+            if (isset($_SESSION['user'])) {
+                $userAlreadyAnswered = $AvailabilityDAO->didUserAnsweredYet($_SESSION['user'], $request['event_id']);
+                $this->render('displayEvent', ['title' => $event['name'], 'description' => $event['description'], 'author' => $author['username'], 'availabilities' => $availability_counts, 'nbParticipants' => $nbParticipants, 'startDay' => $event['start'], 'nbDaysInEvent' => $nbDaysEvent, 'eventId' => $event['id'], 'userAlreadyAnswered' => $userAlreadyAnswered]);
+            } else {
+                $this->render('displayEvent', ['title' => $event['name'], 'description' => $event['description'], 'author' => $author['username'], 'availabilities' => $availability_counts, 'nbParticipants' => $nbParticipants, 'startDay' => $event['start'], 'nbDaysInEvent' => $nbDaysEvent, 'eventId' => $event['id']]);
+            }
         } else {
             $this->render('error', ["message" => "Mauvaise requête lié à event_id"]);
         }
