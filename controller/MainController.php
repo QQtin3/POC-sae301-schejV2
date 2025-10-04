@@ -5,7 +5,7 @@ namespace controller;
 use model\dao\EventsDAO;
 
 require_once CONTROLLER_DIR . '/Controller.php';
-require_once __ROOT__ . "/model/dao/EventsDAO.php";
+require_once ROOT . "/model/dao/EventsDAO.php";
 
 class MainController extends Controller
 {

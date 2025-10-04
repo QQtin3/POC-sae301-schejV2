@@ -5,8 +5,8 @@ namespace model\dao;
 use model\data\ChoicesModel;
 use model\MySQLConnection;
 
-require_once __ROOT__ . '/model/data/ChoicesModel.php';
-require_once __ROOT__ . '/model/MySQLConnection.php';
+require_once ROOT . '/model/data/ChoicesModel.php';
+require_once ROOT . '/model/MySQLConnection.php';
 
 class ChoicesDAO
 {

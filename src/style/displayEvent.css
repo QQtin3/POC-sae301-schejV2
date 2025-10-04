@@ -51,17 +51,6 @@
     cursor: not-allowed; /* Curseur indiquant que le bouton est désactivé */
 }
 
-/* Styles pour le tooltip */
-.tooltip {
-    display: none; /* Cacher par défaut */
-    position: absolute; /* Positionner par rapport au parent */
-    background-color: rgba(0, 0, 0, 0.8); /* Couleur de fond du tooltip */
-    color: white; /* Couleur du texte */
-    padding: 5px 10px; /* Espacement */
-    border-radius: 4px; /* Coins arrondis */
-    z-index: 100; /* S'assurer qu'il est au-dessus des autres éléments */
-}
-
 /* Afficher le tooltip lors du survol du bouton désactivé */
 .event-details button:disabled + .tooltip {
     display: block; /* Afficher le tooltip */
@@ -121,13 +110,6 @@
 
 .right-container button:hover {
     background-color: #165b25;
-}
-
-button:disabled {
-    background-color: #ccc; /* A gray background to indicate disabled */
-    color: #666; /* Gray text */
-    cursor: not-allowed; /* Show a not-allowed cursor */
-    pointer-events: none; /* Ensure the button is truly non-clickable */
 }
 
 .right-container input {

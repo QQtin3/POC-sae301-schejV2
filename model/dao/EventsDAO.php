@@ -5,8 +5,8 @@ namespace model\dao;
 use model\data\EventsModel;
 use model\MySQLConnection;
 
-require_once __ROOT__ . '/model/data/EventsModel.php';
-require_once __ROOT__ . '/model/MySQLConnection.php';
+require_once ROOT . '/model/data/EventsModel.php';
+require_once ROOT . '/model/MySQLConnection.php';
 
 class EventsDAO {
 
@@ -100,5 +100,3 @@ class EventsDAO {
         return $stmt->execute();
     }
 }
-
-?>

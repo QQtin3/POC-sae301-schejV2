@@ -7,8 +7,8 @@ use model\dao\EventsDAO;
 use model\data\ChoicesModel;
 use model\data\EventsModel;
 
-require_once __ROOT__ . "/model/dao/ChoicesDAO.php";
-require_once __ROOT__ . "/model/dao/EventsDAO.php";
+require_once ROOT . "/model/dao/ChoicesDAO.php";
+require_once ROOT . "/model/dao/EventsDAO.php";
 require_once CONTROLLER_DIR . '/Controller.php';
 
 class CreateEventController extends Controller

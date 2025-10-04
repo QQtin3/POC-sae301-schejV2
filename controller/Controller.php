@@ -66,7 +66,7 @@ abstract class Controller
             ob_start();
 
             // Include the template file
-            include $filePath;
+            include_once $filePath;
 
             // End buffering and return its contents
             $output = ob_get_clean();
@@ -77,5 +77,3 @@ abstract class Controller
         return $output;
     }
 }
-
-?>

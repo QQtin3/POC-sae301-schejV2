@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include_once 'header.php'; ?>
 <head>
     <title>POC - SchejV2</title>
     <link href="/src/style/disconnect.css" rel="stylesheet" type="text/css">
@@ -32,4 +32,4 @@
     </div>
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>

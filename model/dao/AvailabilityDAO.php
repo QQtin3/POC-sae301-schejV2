@@ -5,8 +5,8 @@ namespace model\dao;
 use model\data\AvailabilityModel;
 use model\MySQLConnection;
 
-require_once __ROOT__ . '/model/data/AvailabilityModel.php';
-require_once __ROOT__ . '/model/MySQLConnection.php';
+require_once ROOT . '/model/data/AvailabilityModel.php';
+require_once ROOT . '/model/MySQLConnection.php';
 
 class AvailabilityDAO
 {
@@ -85,15 +85,9 @@ class AvailabilityDAO
             $array = $result->fetch_assoc();
 
             // Retourne true si l'utilisateur a déjà répondu
-            if ($array['nbUser'] > 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return $array['nbUser'] > 0;
         } else {
             return null;
         }
     }
 }
-
-?>

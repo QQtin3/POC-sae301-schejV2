@@ -1,4 +1,5 @@
 <?php
+
 namespace controller;
 
 class ApplicationController
@@ -27,13 +28,7 @@ class ApplicationController
         return self::$instance;
     }
 
-    private function starts_with($string, $startString): bool
-    {
-        $len = strlen($startString);
-        return substr($string, 0, $len) === $startString;
-    }
-
-    function ends_with($string, $endString): bool
+    public function ends_with($string, $endString): bool
     {
         $len = strlen($endString);
         if ($len == 0) {
@@ -52,9 +47,6 @@ class ApplicationController
     public function addRoute($path, $ctrl): void
     {
         $filePath = $ctrl;
-        // if(!str_ends_with($ctrl, '.php')){
-        //     $filePath = $filePath.".php";
-        // }
         if (!$this->ends_with($ctrl, ".php")) {
             $filePath = $filePath . ".php";
         }
@@ -105,8 +97,7 @@ class ApplicationController
     private function file_get_php_classes($filepath): array
     {
         $php_code = file_get_contents($filepath);
-        $classes = $this->get_php_classes($php_code);
-        return $classes;
+        return $this->get_php_classes($php_code);
     }
 
     /**
@@ -119,9 +110,6 @@ class ApplicationController
         $path = $this->request_path();
         if (array_key_exists($path, $this->routes)) {
             $filePath = $this->routes[$path];
-            // if(!str_ends_with($filePath, '.php')){
-            //     $filePath = $filePath.".php";
-            // }
 
             if (!$this->ends_with($filePath, ".php")) {
                 $filePath = $filePath . ".php";
@@ -133,18 +121,9 @@ class ApplicationController
 
             $controller = new $ctrl_class();
             switch ($_SERVER["REQUEST_METHOD"]) {
-                case "GET":
-                    $controller->get($_REQUEST);
-                    break;
-                case "POST":
-                    $controller->post($_REQUEST);
-                    break;
-
-                case "PUT":
-                    $controller->post($_REQUEST);
-                    break;
-
                 case "DELETE":
+                case "PUT":
+                case "POST":
                     $controller->post($_REQUEST);
                     break;
 
@@ -152,13 +131,8 @@ class ApplicationController
                     $controller->get($_REQUEST);
                     break;
             }
-        }
-        // if (isset($this->routes[$path]) AND is_callable($this->routes[$path])) {
-        //     $this->routes[$path]();
-        // }
-        else {
+        } else {
             $this->routes["error"];
         }
     }
 }
-?>

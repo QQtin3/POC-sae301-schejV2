@@ -5,8 +5,8 @@ namespace controller;
 use model\dao\UserDataDAO;
 use model\data\UserDataModel;
 
-require_once __ROOT__ . '/model/data/UserDataModel.php';
-require_once __ROOT__ . '/model/dao/UserDataDAO.php';
+require_once ROOT . '/model/data/UserDataModel.php';
+require_once ROOT . '/model/dao/UserDataDAO.php';
 require_once CONTROLLER_DIR . '/Controller.php';
 
 class LoginController extends Controller

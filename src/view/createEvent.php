@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include_once 'header.php'; ?>
 <head>
     <title>POC - SchejV2</title>
     <link href="/src/style/createEvent.css" rel="stylesheet" type="text/css">
@@ -50,16 +50,6 @@
             <label for="end_date">Date de fin</label>
             <input type="date" id="end_date" name="end_date" required>
 
-            <!-- Section pour ajouter des choix supplémentaires (Finalement non implémenté mais potentiel mise à jour) -->
-
-            <!-- <div class="option-container">
-                <label for="choices">Choix supplémentaires (optionnels)</label>
-                <div id="choice-list"></div> -->
-
-                <!-- Bouton pour ajouter un choix -->
-                <!-- <button type="button" onclick="addChoice()">Ajouter un choix</button>
-            </div> -->
-
             <!-- Bouton de soumission -->
             <input type="submit" value="Créer l'événement">
         </form>
@@ -74,4 +64,4 @@
     </div>
 </main>
 
-<?php include 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>

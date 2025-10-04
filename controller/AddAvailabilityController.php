@@ -8,9 +8,9 @@ use model\dao\EventsDAO;
 use model\dao\UserDataDAO;
 use model\data\AvailabilityModel;
 
-require_once __ROOT__ . "/model/dao/EventsDAO.php";
-require_once __ROOT__ . "/model/dao/UserDataDAO.php";
-require_once __ROOT__ . "/model/dao/AvailabilityDAO.php";
+require_once ROOT . "/model/dao/EventsDAO.php";
+require_once ROOT . "/model/dao/UserDataDAO.php";
+require_once ROOT . "/model/dao/AvailabilityDAO.php";
 require_once CONTROLLER_DIR . '/Controller.php';
 
 class AddAvailabilityController extends Controller
@@ -24,11 +24,11 @@ class AddAvailabilityController extends Controller
     {
         if (isset($_SESSION['user'])) {
             if (isset($request['wannaAdd'])) {
-                $EventsDAO = new EventsDAO();
+                $eventsDAO = new EventsDAO();
                 $UserDataDAO = new UserDataDAO();
 
                 // Prendre les informations nécessaires sur l'événement, l'auteur, et les disponibilités
-                $event = $EventsDAO->getEventById($request['eventId']);
+                $event = $eventsDAO->getEventById($request['eventId']);
                 $author = $UserDataDAO->getUserById($event['user']);
                 $start_event_day = new DateTime($event['start']);
                 $end_event_day = new DateTime($event['end']);
@@ -36,10 +36,10 @@ class AddAvailabilityController extends Controller
 
                 $this->render('addAvailability', ['title' => $event['name'], 'description' => $event['description'], 'author' => $author['username'], 'eventId' => $event['id'], 'nbDaysInEvent' => $nbDaysEvent, 'startDay' => $event['start']]);
             } else {
-                $EventsDAO = new EventsDAO();
+                $eventsDAO = new EventsDAO();
                 $AvailabilityDAO = new AvailabilityDAO();
 
-                $event = $EventsDAO->getEventById($request['eventId']);
+                $event = $eventsDAO->getEventById($request['eventId']);
                 $start_day = new DateTime($event['start']);
 
                 foreach (json_decode($request['selected_availabilities'], true) as $availability) {

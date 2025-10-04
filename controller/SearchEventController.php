@@ -5,8 +5,8 @@ namespace controller;
 use model\dao\EventsDAO;
 use model\dao\UserDataDAO;
 
-require_once __ROOT__ . "/model/dao/EventsDAO.php";
-require_once __ROOT__ . "/model/dao/UserDataDAO.php";
+require_once ROOT . "/model/dao/EventsDAO.php";
+require_once ROOT . "/model/dao/UserDataDAO.php";
 require_once CONTROLLER_DIR . '/Controller.php';
 
 class SearchEventController extends Controller
@@ -40,5 +40,3 @@ class SearchEventController extends Controller
         }
     }
 }
-
-?>

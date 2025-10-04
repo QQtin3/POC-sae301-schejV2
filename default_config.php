@@ -8,4 +8,3 @@ const HOST = "";  // Localhost or IP address of your server (MAKE SURE IT USES T
 const USER = "";  // User you want to connect to
 const PASSWORD = "";  // Password if u set one
 const DATABASE = "";  // Name of your MySQL database
-?>

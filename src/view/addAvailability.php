@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include_once 'header.php'; ?>
     <head>
         <title>POC - SchejV2</title>
         <link href="/src/style/displayEvent.css" rel="stylesheet" type="text/css">
@@ -20,6 +20,7 @@
 
                 <!-- Calendrier -->
                 <table class="schedule-table">
+                    <caption>Calendrier</caption>
                     <thead>
                     <tr>
                         <th>Heure</th>
@@ -59,4 +60,5 @@
         </div>
         <script src="/src/script/addAvailability.js"></script>
     </main>
-<?php include 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>
+

@@ -1,5 +1,5 @@
 <?php
-include 'header.php'; // Inclure l'en-tête
+include_once 'header.php'; // Inclure l'en-tête
 ?>
 <head>
     <title>POC - SchejV2</title>
@@ -35,5 +35,5 @@ include 'header.php'; // Inclure l'en-tête
 </main>
 
 <?php
-include 'footer.php'; // Inclure le pied de page
+include_once 'footer.php'; // Inclure le pied de page
 ?>

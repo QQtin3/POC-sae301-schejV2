@@ -7,9 +7,9 @@ use model\dao\AvailabilityDAO;
 use model\dao\EventsDAO;
 use model\dao\UserDataDAO;
 
-require_once __ROOT__ . "/model/dao/EventsDAO.php";
-require_once __ROOT__ . "/model/dao/UserDataDAO.php";
-require_once __ROOT__ . "/model/dao/AvailabilityDAO.php";
+require_once ROOT . "/model/dao/EventsDAO.php";
+require_once ROOT . "/model/dao/UserDataDAO.php";
+require_once ROOT . "/model/dao/AvailabilityDAO.php";
 require_once CONTROLLER_DIR . '/Controller.php';
 
 class DisplayEventController extends Controller
@@ -21,21 +21,21 @@ class DisplayEventController extends Controller
 
     public function post($request): void
     {
-        $EventsDAO = new EventsDAO();
-        $UserDataDAO = new UserDataDAO();
-        $AvailabilityDAO = new AvailabilityDAO();
+        $eventsDAO = new EventsDAO();
+        $userDataDAO = new UserDataDAO();
+        $availabilityDAO = new AvailabilityDAO();
 
         if (isset($request['event_id'])) {
 
             // Prendre les informations nécessaires sur l'événement, l'auteur, et les disponibilités
-            $event = $EventsDAO->getEventById($request['event_id']);
-            $author = $UserDataDAO->getUserById($event['user']);
-            $availabilities = $AvailabilityDAO->getAvailabilityFromEvent($request['event_id']);
+            $event = $eventsDAO->getEventById($request['event_id']);
+            $author = $userDataDAO->getUserById($event['user']);
+            $availabilities = $availabilityDAO->getAvailabilityFromEvent($request['event_id']);
 
             $start_event_day = new DateTime($event['start']);
             $end_event_day = new DateTime($event['end']);
             $nbDaysEvent = $start_event_day->diff($end_event_day)->days;  // Nombre de jours dans l'événement
-            $nbParticipants = $AvailabilityDAO->getNbPeopleAnswered($request['event_id'])['nbUser'];
+            $nbParticipants = $availabilityDAO->getNbPeopleAnswered($request['event_id'])['nbUser'];
             $availability_counts = [];
             for ($i = 8; $i < 24; $i++) {
                 for ($j = 0; $j < $nbDaysEvent; $j++) {
@@ -58,7 +58,7 @@ class DisplayEventController extends Controller
             }
 
             if (isset($_SESSION['user'])) {
-                $userAlreadyAnswered = $AvailabilityDAO->didUserAnsweredYet($_SESSION['user'], $request['event_id']);
+                $userAlreadyAnswered = $availabilityDAO->didUserAnsweredYet($_SESSION['user'], $request['event_id']);
                 $this->render('displayEvent', ['title' => $event['name'], 'description' => $event['description'], 'author' => $author['username'], 'availabilities' => $availability_counts, 'nbParticipants' => $nbParticipants, 'startDay' => $event['start'], 'nbDaysInEvent' => $nbDaysEvent, 'eventId' => $event['id'], 'userAlreadyAnswered' => $userAlreadyAnswered]);
             } else {
                 $this->render('displayEvent', ['title' => $event['name'], 'description' => $event['description'], 'author' => $author['username'], 'availabilities' => $availability_counts, 'nbParticipants' => $nbParticipants, 'startDay' => $event['start'], 'nbDaysInEvent' => $nbDaysEvent, 'eventId' => $event['id']]);

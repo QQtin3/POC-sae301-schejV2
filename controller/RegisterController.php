@@ -5,11 +5,11 @@ namespace controller;
 use model\dao\UserDataDAO;
 use model\data\UserDataModel;
 
-require_once __ROOT__ . '/model/data/UserDataModel.php';
-require_once __ROOT__ . '/model/dao/UserDataDAO.php';
+require_once ROOT . '/model/data/UserDataModel.php';
+require_once ROOT . '/model/dao/UserDataDAO.php';
 require_once CONTROLLER_DIR . '/Controller.php';
 
-class registerController extends Controller
+class RegisterController extends Controller
 {
     public function get($request): void
     {
@@ -30,9 +30,9 @@ class registerController extends Controller
                     // Some checks to make sure data is valid
                     if ($userDAO->isUsernameAlreadyInDB($username)) {
                         $this->render("registerPage", ["message" => "Ce nom d'utilisateur est déjà attribué"]);
-                    } else if (!UserDataDAO::isUsernameValid($username)) {
+                    } elseif (!UserDataDAO::isUsernameValid($username)) {
                         $this->render("registerPage", ["message" => "Ce nom d'utilisateur n'est pas valide (doit être supérieur ou égal à 3 caractères)"]);
-                    } else if (!UserDataDAO::isPasswordSecure($password)) {
+                    } elseif (!UserDataDAO::isPasswordSecure($password)) {
                         $this->render("registerPage", ["message" => "Ce mot de passe n'est pas valide (doit être supérieur ou égal à 8 caractères)"]);
                     } else {
                         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

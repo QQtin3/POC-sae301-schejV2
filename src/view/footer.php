@@ -1,5 +1,6 @@
 <head>
     <link href="/src/style/footer.css" rel="stylesheet" type="text/css">
+    <title></title>
 </head>
 <footer>
     <p>Proof of Concept - LEGEAY Quentin - Based on <a href="https://schej.it/"

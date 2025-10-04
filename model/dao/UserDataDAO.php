@@ -5,8 +5,8 @@ namespace model\dao;
 use model\data\UserDataModel;
 use model\MySQLConnection;
 
-require_once __ROOT__ . '/model/data/UserDataModel.php';
-require_once __ROOT__ . '/model/MySQLConnection.php';
+require_once ROOT . '/model/data/UserDataModel.php';
+require_once ROOT . '/model/MySQLConnection.php';
 
 class UserDataDAO
 {
@@ -15,7 +15,7 @@ class UserDataDAO
 
     public function __construct()
     {
-        $this->conn = MySQLConnection::getInstance();;
+        $this->conn = MySQLConnection::getInstance();
     }
 
     // Ajouter un utilisateur
@@ -71,8 +71,7 @@ class UserDataDAO
 
             if ($stmt->execute()) {
                 $result = $stmt->get_result();
-                $rows = $result->fetch_assoc();
-                return $rows;
+                return $result->fetch_assoc();
             } else {
                 return null;
             }
@@ -90,5 +89,3 @@ class UserDataDAO
         return strlen($username) >= 3;
     }
 }
-
-?>

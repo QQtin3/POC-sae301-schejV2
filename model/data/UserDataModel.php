@@ -28,5 +28,3 @@ class UserDataModel
         return $this->password;
     }
 }
-
-?>

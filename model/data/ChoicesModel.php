@@ -27,5 +27,3 @@ class ChoicesModel
         return $this->event;
     }
 }
-
-?>

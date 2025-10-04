@@ -1,7 +1,7 @@
 <?php
 
 namespace model;
-require_once __ROOT__ . '/config.php';
+require_once ROOT . '/config.php';
 
 use mysqli;
 
@@ -24,4 +24,3 @@ class MySQLConnection
         return self::$instance;
     }
 }
-?>

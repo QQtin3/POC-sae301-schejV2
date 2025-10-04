@@ -1,8 +1,7 @@
 <?php
 // header
-include VIEWS_DIR . "/header.php";
+include_once VIEWS_DIR . "/header.php";
 
 echo $data["message"];
 
-include VIEWS_DIR . "/footer.php";
-?>
+include_once VIEWS_DIR . "/footer.php";

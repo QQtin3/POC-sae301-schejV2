@@ -1,7 +1,7 @@
 <?php
-const __ROOT__ = __DIR__;
+const ROOT = __DIR__;
 // Configuration
-require_once __ROOT__ . "/config.php";
+require_once ROOT . "/config.php";
 
 session_start();
 
@@ -63,4 +63,3 @@ ApplicationController::getInstance()->addRoute(
 
 // Process the request
 ApplicationController::getInstance()->process();
-?>
